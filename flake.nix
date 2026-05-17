@@ -46,10 +46,10 @@
           # frameworks because some indirect crates link against them.
           buildInputs = pkgs.lib.optionals pkgs.stdenv.isLinux [
             pkgs.alsa-lib
-          ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin with pkgs; [
-            darwin.apple_sdk.frameworks.Security
-            darwin.apple_sdk.frameworks.CoreFoundation
-            darwin.apple_sdk.frameworks.SystemConfiguration
+          ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
+            pkgs.darwin.apple_sdk.frameworks.Security
+            pkgs.darwin.apple_sdk.frameworks.CoreFoundation
+            pkgs.darwin.apple_sdk.frameworks.SystemConfiguration
           ];
 
           # The unit tests in this repo do not require network or a TTY, but
